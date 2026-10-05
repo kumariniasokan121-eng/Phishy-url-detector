@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <div>
+        <img alt = "{{ bottom }}" class = "img-fluid" arc = "{{ url_for('static', filename = 'apology.png') }}" style = "max-width: 500px">
+    </div>
+{% endblock %}

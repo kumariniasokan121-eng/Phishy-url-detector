@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Phishy URL detector
+{% endblock %}
+
+{% block main %}
+    <form action="/url_detector" method="post">
+        <div class= "form-group">
+            <input autocomplete="off" autofocus class="form-control" name="URL" placeholder="URL" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Check</button>
+    </form>
+    {% if result %}
+        <div class = "form-group">
+            <h2>{{ url }}</h2>
+            {% if result == "phishy" %}
+                <div class = "alert alert-success">This is a phishy URL!!!</div>
+            {% else %}
+                <div class = "alert alert-success">This is a safe URL...</div>
+            {% endif %}
+            {% if reasons %}
+                <ul class = "list-group mx-auto">
+                    {% for reason in reasons %}
+                        <li class = "list-group-item text-start">{{ reason }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}
